@@ -3,4 +3,16 @@ services:
   - docker
 
 before_install:
-  - docker build -t alexiastandish/react-test -f ./client/Dockerfile.dev .
+  - docker build -t alexiastandish/react-test -f ./client/Dockerfile.dev ./client
+
+script:
+  - docker run -e CI=true alexiastandish/react-test npm test
+
+after_success:
+  - docker build -t alexiastandish/multi-client ./client
+  - docker build -t alexiastandish/multi-nginx ./nginx
+  - docker build -t alexiastandish/multi-server ./server
+  - docker build -t alexiastandish/multi-worker ./worker
+# Log in to docker CLI
+
+# Take images and push them to docker hub
