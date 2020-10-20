@@ -13,6 +13,10 @@ after_success:
   - docker build -t alexiastandish/multi-nginx ./nginx
   - docker build -t alexiastandish/multi-server ./server
   - docker build -t alexiastandish/multi-worker ./worker
-# Log in to docker CLI
-
-# Take images and push them to docker hub
+  # Log in to docker CLI
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
+  # Take images and push them to docker hub
+  - docker push alexiastandish/multi-client
+  - docker push alexiastandish/multi-nginx
+  - docker push alexiastandish/multi-server
+  - docker push alexiastandish/multi-worker
