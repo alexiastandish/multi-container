@@ -20,3 +20,15 @@ after_success:
   - docker push alexiastandish/multi-nginx
   - docker push alexiastandish/multi-server
   - docker push alexiastandish/multi-worker
+
+deploy:
+  provider: elasticbeanstalk
+  region: 'us-east-2'
+  app: 'multi'
+  env: 'Multi-env'
+  bucket_name: 'elasticbeanstalk-us-east-2-360235357203'
+  bucket_path: 'docker-multi'
+  on:
+    branch: master
+  access_key_id: $AWS_ACCESS_KEY
+  secret_access_key: $AWS_SECRET_KEY
