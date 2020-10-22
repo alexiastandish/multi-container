@@ -8,9 +8,9 @@ import Fib from './Fib'
 function App() {
   return (
     <Router>
-      <div className="App">
+      <div>
         <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
+          <h1>FIB CALCULATOR</h1>
           <Link to="/">Home</Link>
           <Link to="/otherpage">Other Page</Link>
         </header>
